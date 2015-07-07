@@ -1,15 +1,46 @@
 'use strict';
 
 // Customers controller
-angular.module('customers').controller('CustomersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Customers',
-	function($scope, $stateParams, $location, Authentication, Customers) {
-		$scope.authentication = Authentication;
 
+var customersApp = angular.module('customers');
+
+customersApp.controller('CustomersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Customers',
+	function($scope, $stateParams, $location, Authentication, Customers) {
+		this.authentication = Authentication;
+
+		// Find a list of Customers
+		this.customers = Customers.query();
+	}
+]);
+
+customersApp.controller('CustomersCreateController', ['$scope', 'Customers',
+	function($scope, Customers) {
+
+	}
+]);
+
+customersApp.controller('CustomersEditController', ['$scope', 'Customers',
+	function($scope, Customers) {
+
+	}
+]);
+		
+/*
 		// Create new Customer
 		$scope.create = function() {
 			// Create new Customer object
 			var customer = new Customers ({
-				name: this.name
+				firstName: this.firstName,
+				surname: this.surname,
+				suburb: this.suburb,
+				country: this.country,
+				industry: this.industry,
+				email: this.email,
+				phone: this.phone,
+				referred: this.referred,
+				channel: this.channel,
+				created: this.created,
+				user: this.user
 			});
 
 			// Redirect after save
@@ -17,7 +48,16 @@ angular.module('customers').controller('CustomersController', ['$scope', '$state
 				$location.path('customers/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.firstName = '';
+				$scope.surname = '';
+				$scope.suburb = '';
+				$scope.country = '';
+				$scope.industry = '';
+				$scope.email = '';
+				$scope.phone = '';
+				$scope.referred = '';
+				$scope.channel = '';
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -51,10 +91,7 @@ angular.module('customers').controller('CustomersController', ['$scope', '$state
 			});
 		};
 
-		// Find a list of Customers
-		$scope.find = function() {
-			$scope.customers = Customers.query();
-		};
+		
 
 		// Find existing Customer
 		$scope.findOne = function() {
@@ -62,5 +99,4 @@ angular.module('customers').controller('CustomersController', ['$scope', '$state
 				customerId: $stateParams.customerId
 			});
 		};
-	}
-]);
+		*/
