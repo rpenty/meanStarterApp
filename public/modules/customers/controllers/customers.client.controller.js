@@ -21,8 +21,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
 					$scope.customer = customer;
 
 
-					$scope.ok = function () {
-					    $modalInstance.close($scope.customer);
+					$scope.ok = function (isValid) {
+						if (isValid) {
+							$modalInstance.close($scope.customer);
+						}
 					};
 
 					$scope.cancel = function () {
@@ -71,6 +73,18 @@ customersApp.controller('CustomersUpdateController', ['$scope', 'Customers',
 	}
 ]);
 		
+
+customersApp.directive('customerList', [function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+    	templateUrl: 'modules/customers/views/customer-list-template.html',
+    	link: function(scope, element, attrs) {
+
+    	}
+  	};
+}]);
+
 /*
 		// Create new Customer
 		$scope.create = function() {
