@@ -1,9 +1,10 @@
-<section data-ng-controller="CustomersController">
-    <div class="page-header">
-        <h1>New Customer</h1>
+<section data-ng-controller="CustomersCreateController as customerCrCtrl">
+
+    <div class="modal-header">
+        <h3 class="modal-title">New Customer</h3>
     </div>
-    <div class="col-md-12">
-        <form class="" data-ng-submit="create()" novalidate>
+    <div class="modal-body">
+        <form name="createCustomerForm">
             <fieldset>
                 <div class="row">
                     <div class="form-group">
@@ -14,31 +15,31 @@
                         </div>
                     </div>
                     <div class="col-sm-6 text-center">
-                        <i class="glyphicon glyphicon-user cust-profile" ng-class="{'text-primary' : referred, 'text-danger' : !referred}"></i>
+                        <i class="glyphicon glyphicon-user cust-profile" ng-class="{'text-primary' : customerCrCtrl.referred, 'text-pink' : !customerCrCtrl.referred}"></i>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label" for="firstName">First Name</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="firstName" id="firstName" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.firstName" id="firstName" class="form-control" placeholder="Name" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="surname">Surname</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="surname" id="surname" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.surname" id="surname" class="form-control" placeholder="Name" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="suburb">Suburb</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="suburb" id="suburb" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.suburb" id="suburb" class="form-control" placeholder="Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="country">Country</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="country" id="country" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.country" id="country" class="form-control" placeholder="Name">
                             </div>
                         </div>
                     </div>
@@ -48,13 +49,13 @@
                         <div class="form-group">
                             <label class="control-label" for="phone">Phone</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="phone" id="phone" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.phone" id="phone" class="form-control" placeholder="Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="email">Email</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="email" id="email" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.email" id="email" class="form-control" placeholder="Name">
                             </div>
                         </div>
                     </div>
@@ -62,13 +63,13 @@
                         <div class="form-group">
                             <label class="control-label" for="referred">Referred</label>
                             <div class="controls">
-                                <input type="checkbox" data-ng-model="referred" id="referred" class="form-control checkbox-left" placeholder="Name" required>
+                                <input type="checkbox" data-ng-model="customerCrCtrl.referred" id="referred" class="form-control checkbox-left" placeholder="Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="channel">Channel</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="channel" id="channel" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.channel" id="channel" class="form-control" placeholder="Name">
                             </div>
                         </div>
                     </div>
@@ -78,19 +79,21 @@
                         <div class="form-group">
                             <label class="control-label" for="industry">Industry</label>
                             <div class="controls">
-                                <input type="text" data-ng-model="industry" id="industry" class="form-control" placeholder="Name" required>
+                                <input type="text" data-ng-model="customerCrCtrl.industry" id="industry" class="form-control" placeholder="Name">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-lg btn-success">
-                                Save &amp; Close
-                            </button>
+                           
                         </div>
                     </div>
                 </div>
             </fieldset>
         </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="customerCrCtrl.create(); ok(createCustomerForm.$valid)" ng-disabled="createCustomerForm.$invalid">Create and Close</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
 </section>
